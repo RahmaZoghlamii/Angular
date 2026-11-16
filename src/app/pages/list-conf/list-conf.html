@@ -1,0 +1,52 @@
+<h2>TEST LISTE DES CONFÉRENCES</h2>
+<section class="conferences-section">
+
+  <div class="section-heading">
+    <h1>Nos conférences</h1>
+    <p>Découvrez nos prochains événements.</p>
+  </div>
+
+  <div class="conference-grid">
+
+    @for (conf of conferences; track conf.id) {
+
+      <article class="conference-card">
+
+        <img
+          [src]="conf.picture"
+          [alt]="conf.title"
+          class="conference-image">
+
+        <div class="conference-content">
+
+          <h2>{{ conf.title }}</h2>
+
+          <p>
+            📅 {{ conf.date }}
+          </p>
+
+          <p>
+            📍 {{ conf.address }}
+          </p>
+
+          <span
+            class="places"
+            [class.full]="conf.availablePlaces === 0">
+
+            @if (conf.availablePlaces > 0) {
+              {{ conf.availablePlaces }} places disponibles
+            } @else {
+              Complet
+            }
+
+          </span>
+
+        </div>
+      </article>
+
+    } @empty {
+      <p>Aucune conférence disponible.</p>
+    }
+
+  </div>
+</section>
