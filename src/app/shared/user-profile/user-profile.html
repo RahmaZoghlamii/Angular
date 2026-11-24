@@ -1,0 +1,27 @@
+<div class="card p-3 mb-3">
+  <h3>Profil utilisateur</h3>
+
+  @if (modifier == false) {
+    <p>Nom : {{ user.name }}</p>
+    <p>Email : {{ user.email }}</p>
+  }
+
+  @if (modifier == true) {
+    <input type="text"
+           class="form-control mb-2"
+           [(ngModel)]="user.name">
+
+    <input type="email"
+           class="form-control mb-2"
+           [(ngModel)]="user.email">
+  }
+
+  <button class="btn btn-primary"
+          (click)="change()">
+    @if (modifier == false) {
+      Modifier
+    } @else {
+      Enregistrer
+    }
+  </button>
+</div>

@@ -1,10 +1,58 @@
 
-<h1>Bienvenue sur notre application</h1>
+<input type="text"
+       name="search"
+       class="form-control"
+       placeholder="Search by title"
+       [(ngModel)]="searchtitle">
 
-<p>Nom du projet : {{ title }}</p>
+<h1>{{ searchtitle }}</h1>
 
-<button class="btn btn-sm btn-primary"
-        (click)="change()"
-        [disabled]="state">
-  Cliquez ici
-</button>
+<table class="table">
+  <tr>
+    <th>Title</th>
+    <th>Date</th>
+    <th>Places disponibles</th>
+    <th>Action</th>
+  </tr>
+
+  @for (conf of list; track conf.title) {
+
+    @if (conf.title.toLowerCase().includes(searchtitle.toLowerCase())) {
+      <tr>
+        <td>{{ conf.title | uppercase }}</td>
+        <td>{{ conf.date | date:'dd/MM/yyyy' }}</td>
+        <td>{{ conf.nbmax - conf.nbReservation }}</td>
+        <td>
+          <button
+            class="btn btn-sm"
+            [class.btn-success]="conf.nbmax - conf.nbReservation >= 10"
+            [class.btn-warning]="conf.nbmax - conf.nbReservation > 0 && conf.nbmax - conf.nbReservation < 10"
+            [class.btn-danger]="conf.nbReservation >= conf.nbmax"
+            [disabled]="conf.nbReservation >= conf.nbmax"
+            (click)="participate(conf)">
+            Participate
+          </button>
+        </td>
+      </tr>
+    }
+  } @empty {
+    <tr>
+      <td colspan="4">Aucune conférence disponible.</td>
+    </tr>
+  }
+
+
+</table>
+
+<app-list-conf [conferences]="list"></app-list-conf>
+<hr>
+
+<section class="user-space">
+  <h2>Mon espace</h2>
+
+  <div class="user-space-grid">
+    <app-user-profile></app-user-profile>
+    <app-friends-list></app-friends-list>
+    <app-notifications></app-notifications>
+  </div>
+</section>

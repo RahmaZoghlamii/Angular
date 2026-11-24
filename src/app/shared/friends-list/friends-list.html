@@ -1,0 +1,26 @@
+<div class="card p-3 mb-3">
+  <h3>Liste des amis</h3>
+
+  <input type="text"
+         class="form-control mb-2"
+         placeholder="Nom de l'ami"
+         [(ngModel)]="newFriend">
+
+  <button class="btn btn-success mb-3"
+          (click)="ajouter()">
+    Ajouter
+  </button>
+
+  @for (friend of friends; track $index) {
+    <p>
+      {{ friend }}
+
+      <button class="btn btn-sm btn-danger"
+              (click)="supprimer($index)">
+        Supprimer
+      </button>
+    </p>
+  } @empty {
+    <p>Aucun ami disponible.</p>
+  }
+</div>

@@ -1,0 +1,23 @@
+<div class="card p-3 mb-3">
+  <h3>Notifications ({{ messages.length }})</h3>
+
+  @for (message of messages; track $index) {
+    <p>
+      {{ message }}
+
+      <button class="btn btn-sm btn-danger"
+              (click)="supprimer($index)">
+        X
+      </button>
+    </p>
+  } @empty {
+    <p>Aucune notification.</p>
+  }
+
+  @if (messages.length > 0) {
+    <button class="btn btn-warning"
+            (click)="toutSupprimer()">
+      Tout supprimer
+    </button>
+  }
+</div>

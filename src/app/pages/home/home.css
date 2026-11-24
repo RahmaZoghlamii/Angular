@@ -1,0 +1,59 @@
+.user-space {
+  padding: 35px 20px;
+  background-color: #f8fafc;
+}
+
+.user-space h2 {
+  font-size: 26px;
+  margin-bottom: 25px;
+  color: #172033;
+}
+
+.user-space-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.user-space-grid > * {
+  display: block;
+  min-width: 0;
+}
+
+@media (max-width: 900px) {
+  .user-space-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 25px 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.table th {
+  background-color: #0f172a;
+  color: white;
+  padding: 18px;
+  text-align: left;
+}
+
+.table td {
+  padding: 18px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.table tr:hover td {
+  background-color: #f1f5f9;
+}
+
+:host {
+  display: block;
+  max-width: 1400px;
+  margin: auto;
+  padding: 30px 24px;
+}

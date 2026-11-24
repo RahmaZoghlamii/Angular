@@ -1,0 +1,27 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 22px;
+  height: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+}
+
+.card h3 {
+  font-size: 19px;
+  color: #172033;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.card p {
+  color: #475569;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}

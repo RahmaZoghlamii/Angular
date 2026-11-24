@@ -1,4 +1,5 @@
 <h2>TEST LISTE DES CONFÉRENCES</h2>
+
 <section class="conferences-section">
 
   <div class="section-heading">
@@ -8,7 +9,7 @@
 
   <div class="conference-grid">
 
-    @for (conf of conferences; track conf.id) {
+    @for (conf of conferences; track conf.title) {
 
       <article class="conference-card">
 
@@ -21,20 +22,16 @@
 
           <h2>{{ conf.title }}</h2>
 
-          <p>
-            📅 {{ conf.date }}
-          </p>
+          <p>📅 {{ conf.date }}</p>
 
-          <p>
-            📍 {{ conf.address }}
-          </p>
+          <p>{{ conf.description }}</p>
 
           <span
             class="places"
-            [class.full]="conf.availablePlaces === 0">
+            [class.full]="conf.nbReservation >= conf.nbmax">
 
-            @if (conf.availablePlaces > 0) {
-              {{ conf.availablePlaces }} places disponibles
+            @if (conf.nbmax - conf.nbReservation > 0) {
+              {{ conf.nbmax - conf.nbReservation }} places disponibles
             } @else {
               Complet
             }
